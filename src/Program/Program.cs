@@ -69,19 +69,7 @@ namespace Program
             OldestChildVisitor oldestChild = new OldestChildVisitor();
             oldestChild.Visit(nodoJavi);
 
-            if (oldestChild.OldestChildList.Count == 1)
-            {
-                System.Console.WriteLine($"El hijo más grande es \"{oldestChild.OldestChildList.ToArray()[0]}\" y tiene {oldestChild.OldestChild} años");
-            }
-            else
-            {
-                System.Console.Write($"Los hijos más grandes son: ");
-                foreach (string s in oldestChild.OldestChildList)
-                {
-                    System.Console.Write($"{s} ");
-                }
-                System.Console.WriteLine($"y los {oldestChild.OldestChildList.Count} tienen {oldestChild.OldestChild} años");
-            }
+            oldestChild.printOlderChild(oldestChild);
 
             System.Console.WriteLine("**************************************************************************");
 
