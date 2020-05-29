@@ -41,6 +41,23 @@ namespace Library
                 }
             }
         }
+
+        public void printOlderChild(OldestChildVisitor oldestC)
+        {
+            if (oldestC.OldestChildList.Count == 1)
+            {
+                System.Console.WriteLine($"El hijo más grande es \"{oldestC.OldestChildList.ToArray()[0]}\" y tiene {oldestC.OldestChild} años");
+            }
+            else
+            {
+                System.Console.Write($"Los hijos más grandes son: ");
+                foreach (string s in oldestC.OldestChildList)
+                {
+                    System.Console.Write($"{s} ");
+                }
+                System.Console.WriteLine($"y los {oldestC.OldestChildList.Count} tienen {oldestC.OldestChild} años");
+            }
+        }
       
     }
 }
