@@ -4,15 +4,19 @@ using System;
 
 namespace Library
 {
-    public class Node<T>
+    public class Node<T> : IElement
     {
-        private T person;
+        private Person person;
         private List<Node<T>> children = new List<Node<T>>();
 
-        public T Person {
+        public Person Person {
             get
             {
                 return this.person;
+            }
+            set
+            {
+                person = value;
             }
         }
 
@@ -23,9 +27,9 @@ namespace Library
             }
         }
 
-        public Node(T person)
+        public Node(Person person)
         {
-            this.person = person;
+            this.Person = person;
         }
              
         public void AddChildren(Node<T> n)
@@ -35,8 +39,7 @@ namespace Library
 
         public void Accept(IVisitor visitor)
         {
-            visitor.Visit(this); // están ??
+            visitor.Visit(Person);
         }
-        
     }
 }

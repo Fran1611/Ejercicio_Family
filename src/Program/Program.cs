@@ -19,16 +19,16 @@ namespace Program
             Person agustin = new Person("Agustin",15);
             Person javi = new Person ("Javi",70);
             
-            Node nodoFrancisco = new Node(francisco);
-            Node nodoFelipe = new Node(felipe);
-            Node nodoMatias = new Node(matias);
-            Node nodoDiego = new Node(diego);
-            Node nodoJuan = new Node(juan);
-            Node nodoAna = new Node(ana);
-            Node nodoPedro = new Node(pedro);
-            Node nodoLuis = new Node(luis);
-            Node nodoAgustin = new Node(agustin);
-            Node nodoJavi = new Node(javi);
+            Node<Person> nodoFrancisco = new Node<Person>(francisco);
+            Node<Person> nodoFelipe = new Node<Person>(felipe);
+            Node<Person> nodoMatias = new Node<Person>(matias);
+            Node<Person> nodoDiego = new Node<Person>(diego);
+            Node<Person> nodoJuan = new Node<Person>(juan);
+            Node<Person> nodoAna = new Node<Person>(ana);
+            Node<Person> nodoPedro = new Node<Person>(pedro);
+            Node<Person> nodoLuis = new Node<Person>(luis);
+            Node<Person> nodoAgustin = new Node<Person>(agustin);
+            Node<Person> nodoJavi = new Node<Person>(javi);
             
 
             
@@ -43,9 +43,18 @@ namespace Program
             nodoFrancisco.AddChildren(nodoFelipe);
             nodoAna.AddChildren(nodoMatias);
             nodoJuan.AddChildren(nodoDiego);
-                        
+
+            FamilyAgeVisitor familyAge = new FamilyAgeVisitor();
+            familyAge.Visit(nodoJavi);
+            Console.WriteLine(familyAge.FamilyAge);
+                  
+            //LongestNameVisitor longestName = new LongestNameVisitor();
+            //longestName.Visit(nodoJavi);
+            //Console.WriteLine(longestName.names);
 
             // visitar el árbol aquí
+  
+            
         }
     }
 }
