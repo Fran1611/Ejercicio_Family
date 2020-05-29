@@ -13,7 +13,6 @@ namespace Library
         }
         private string nombre;
         private int edad;
-
         public string Nombre
         {
             get

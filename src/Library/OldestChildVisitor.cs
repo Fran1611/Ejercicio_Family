@@ -6,32 +6,41 @@ namespace Library
 {
     public class OldestChildVisitor : IVisitor
     {   
-        List<int> oldestChildList =  new List<int>();
-        private int oldestChild = 0;
+        public List<string> OldestChildList {get;set;}
         public int OldestChild {get; set;}
-        private Node<Person> raiz;
-        public OldestChildVisitor(Node<Person> raiz)
+
+        public OldestChildVisitor()
         {
-            this.raiz = raiz;
+            OldestChild=0;
+            OldestChildList= new List<string>();
         }
         public void Visit(Person person)
         {
             person.Accept(this);
         }
-
         public void Visit(Node<Person> node)
         {
-            foreach(Node<Person> n in node.Children)
+            if(node.Children.Count==0)
             {
-                oldestChildList.Add(n.Person.Edad);
-            }
-            foreach(int i in oldestChildList)
-            {
-                if (i > oldestChild)
+                if(node.Person.Edad>OldestChild)
                 {
-                    oldestChild = i;
+                    OldestChildList.Clear();
+                    OldestChildList.Add(node.Person.Nombre);
+                    OldestChild=node.Person.Edad;
+                }
+                else if (node.Person.Edad==OldestChild)
+                {
+                    OldestChildList.Add(node.Person.Nombre);
+                }
+            }
+            else
+            {
+                foreach(Node<Person> n in node.Children)
+                {
+                    Visit(n);
                 }
             }
         }
+      
     }
 }
